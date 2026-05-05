@@ -96,10 +96,7 @@ fun App() {
         }
 
 
-//    val someList = remember { listOf("Иванов А.С. — Вошёл", "Петрова Е.Н. — Вошла", "Сидоров К.В. — Вошёл",
-//        "Кузнецова М.А. — Вошла", "Смирнов Д.И. — Вошёл", "Васильев О.Л. — Вошёл","Петрова Е.Н. — Вышла",
-//        "Соколов И.Б. — Вошёл","Иванов А.С. — Вышел", "Михайлов П.Р. — Вошёл", "Смирнов Д.И. — Вышел",
-//        "Кузнецова М.А. — Вышла", "Новиков С.В. — Вошёл") }
+//    val someList = remember { listOf() }
 //
 //    LazyColumn(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
 //        items(someList,) {
