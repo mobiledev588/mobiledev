@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -36,6 +37,7 @@ import org.jetbrains.compose.resources.painterResource
 
 import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.compose_multiplatform
+import org.example.project.ui.theme.getApplicationColorScheme
 
 
 @Composable
@@ -60,6 +62,10 @@ fun ShoppingListElement(item: ShoppingListItem, onBoughtChange: (Boolean) -> Uni
         }
     }
 }
+
+
+
+
 @Composable
 fun App() {
     val shoppingList = remember {
@@ -89,11 +95,22 @@ fun App() {
         itemsIndexed(shoppingList) { i, item ->
             ShoppingListElement(
                 item,
-                onBoughtChange = {shoppingList[i] = item.copy(bought = it)},
-                onDelete = {shoppingList.removeAt(i)}
-                )
+                onBoughtChange = { shoppingList[i] = item.copy(bought = it) },
+                onDelete = { shoppingList.removeAt(i) }
+            )
+        }
+        }
+    MaterialTheme (colorScheme = getApplicationColorScheme()){
+        Scaffold { contentPadding ->
+            var state by remember { mutableStateOf(false) }
+            Column(Modifier.padding(contentPadding)) {
+                Button(onClick = { state = !state }) {
+                    Text("Переключить")
+                }
+                Text("Состояние: $state")
             }
         }
+    }
 
 
 //    val someList = remember { listOf() }
