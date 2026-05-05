@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,16 +25,25 @@ import org.jetbrains.compose.resources.painterResource
 import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.compose_multiplatform
 
+
 @Composable
-@Preview
+fun ShoppingListElement(description: String) {
+    Text(description)
+}
+
+@Composable
 fun App() {
-    Column (modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally)
-    {
-        Text("4 курс 4 группа ИВТ", fontSize = 25.sp)
-        Text("Тетерев Николай", fontSize = 25.sp)
-        Text("1 Лабораторная", fontSize = 25.sp)
-                }
-            }
+
+    val someList = remember { listOf("Иванов А.С. — Вошёл", "Петрова Е.Н. — Вошла", "Сидоров К.В. — Вошёл",
+        "Кузнецова М.А. — Вошла", "Смирнов Д.И. — Вошёл", "Васильев О.Л. — Вошёл","Петрова Е.Н. — Вышла",
+        "Соколов И.Б. — Вошёл","Иванов А.С. — Вышел", "Михайлов П.Р. — Вошёл", "Смирнов Д.И. — Вышел",
+        "Кузнецова М.А. — Вышла", "Новиков С.В. — Вошёл") }
+
+    LazyColumn(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+        items(someList,) {
+            ShoppingListElement(it, )
+        }
+    }
+}
 
 
